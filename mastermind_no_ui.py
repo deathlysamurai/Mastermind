@@ -59,7 +59,7 @@ def player_choices():
     print("Choose 4 colors from red, blue, yellow, or green")
     for choice in range(4):
         player_choice = input("Choice: ")
-        while (player_choice != "red") and (player_choice != "blue") and (player_choice != "yellow") and (player_choice != "green"):
+        while player_choice not in easy_colors:
             print("Please enter red, blue, yellow, or green")
             player_choice = input("Choice: ")
         player_choices.append(player_choice)
@@ -82,6 +82,8 @@ def get_correct_answers(computer, player):
                 if new_player.count(new_player[index]) > 1:
                     doubles.append(new_player[index])
                     if doubles.count(new_player[index]) == new_computer.count(new_player[index]):
+                        correct_answers.append("white")
+                    elif doubles.count(new_player[index]) > 3:
                         correct_answers.append("white")
                 else:
                     correct_answers.append("white")
